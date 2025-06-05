@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk83y84g5w15n"]
+
+[ext_resource type="PackedScene" uid="uid://blhs6k0g1s5jx" path="res://Actions/LightsAction.tscn" id="1_seonb"]
+[ext_resource type="Script" uid="uid://dg4f36wlh7dk0" path="res://Actions/RunAction.cs" id="2_xuxuo"]
+
+[sub_resource type="Animation" id="Animation_jhncb"]
+resource_name = "Actions"
+length = 15.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.6333, 2.1667, 2.8333, 4.3333, 5, 6.3333, 8.1333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"AddEnemy"
+}, {
+"args": [],
+"method": &"DisableRun"
+}, {
+"args": [],
+"method": &"EnableRun"
+}, {
+"args": [],
+"method": &"DisableRun"
+}, {
+"args": [],
+"method": &"EnableRun"
+}, {
+"args": [],
+"method": &"DisableRun"
+}, {
+"args": [],
+"method": &"RemoveEnemy"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2d57h"]
+_data = {
+&"Actions": SubResource("Animation_jhncb")
+}
+
+[node name="FloorBase" instance=ExtResource("1_seonb")]
+script = ExtResource("2_xuxuo")
+ActivationDistance = 3.0
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_2d57h")
+}

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b6e0t4umqriky"]
+
+[ext_resource type="Shader" uid="uid://8oj28tgciu3o" path="res://Materials/BasicShaderTransparent.gdshader" id="1_auryb"]
+[ext_resource type="Texture2D" uid="uid://bvaegtprhd1ud" path="res://Enemies/Glimpse/glimpse1.png" id="2_sumqg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_auryb")
+shader_parameter/tex = ExtResource("2_sumqg")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkru33dmkvktk"]
+
+[ext_resource type="Script" uid="uid://qko15rp3e5ys" path="res://Enemies/Glimpse/Glimpse.cs" id="1_wc87j"]
+[ext_resource type="Material" uid="uid://b6e0t4umqriky" path="res://Enemies/Glimpse/Glimpse1.tres" id="2_woq8q"]
+[ext_resource type="Material" uid="uid://rhfcjwvp7drc" path="res://Enemies/Glimpse/Glimpse2.tres" id="3_wc87j"]
+[ext_resource type="AudioStream" uid="uid://dt7c7qw1ibdvf" path="res://Enemies/Glimpse/no.ogg" id="4_ulwr2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_woq8q"]
+
+[node name="Glimpse" type="MeshInstance3D" node_paths=PackedStringArray("NoSoundPlayer")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("PlaneMesh_woq8q")
+surface_material_override/0 = ExtResource("2_woq8q")
+script = ExtResource("1_wc87j")
+Glimpses = Array[Material]([ExtResource("2_woq8q"), ExtResource("3_wc87j")])
+NoSoundPlayer = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ulwr2")

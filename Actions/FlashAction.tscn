@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmnf77tgmhsef"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_wu6w0"]
+[ext_resource type="Script" uid="uid://dhcdnuakb75um" path="res://Actions/FlashAction.cs" id="2_66wy1"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="3_66wy1"]
+
+[node name="FloorBase" instance=ExtResource("1_wu6w0")]
+script = ExtResource("2_66wy1")
+PredeterminedFloor = ExtResource("3_66wy1")
+
+[node name="End" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.70636, -1, 0.767637)

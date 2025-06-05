@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://md8d18xlofh5"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_o3dn1"]
+[ext_resource type="Script" uid="uid://c63mbilefunjp" path="res://Actions/StepsAction.cs" id="2_8ryvx"]
+[ext_resource type="AudioStream" uid="uid://bcx278y6yfaxt" path="res://Sounds/loudstep.ogg" id="3_u774s"]
+
+[sub_resource type="Animation" id="Animation_8ryvx"]
+resource_name = "Playing"
+length = 1.6667
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center/AudioStreamPlayer3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_u774s")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = false
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ab2ct"]
+_data = {
+&"Playing": SubResource("Animation_8ryvx")
+}
+
+[node name="FloorBase" node_paths=PackedStringArray("Animations") instance=ExtResource("1_o3dn1")]
+script = ExtResource("2_8ryvx")
+Animations = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Center" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ab2ct")
+}
+autoplay = "Playing"

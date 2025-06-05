@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.35821.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCP-087-B", "SCP-087-B.csproj", "{EE6742E7-C9B4-495E-9E10-B1555B635C0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE6742E7-C9B4-495E-9E10-B1555B635C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE6742E7-C9B4-495E-9E10-B1555B635C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE6742E7-C9B4-495E-9E10-B1555B635C0D}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{EE6742E7-C9B4-495E-9E10-B1555B635C0D}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{EE6742E7-C9B4-495E-9E10-B1555B635C0D}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{EE6742E7-C9B4-495E-9E10-B1555B635C0D}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

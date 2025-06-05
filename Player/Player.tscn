@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://jvlcxa3mx0vy"]
+
+[ext_resource type="Script" uid="uid://hl3jesmlyoxc" path="res://Player/PlayerController.cs" id="1_xhfnw"]
+[ext_resource type="AudioStream" uid="uid://nr66inw1bgri" path="res://Player/death.ogg" id="2_q3lat"]
+[ext_resource type="AudioStream" uid="uid://hm0dkj5b5nx1" path="res://Player/step.wav" id="2_tok1r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
+radius = 0.3
+height = 1.5
+
+[sub_resource type="Animation" id="Animation_tok1r"]
+resource_name = "Death"
+length = 1.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_q3lat")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Crash"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:DeathBrightnessLerp")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("./Rail/Camera3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1.49, 1, 0.653, 0.271, -0.271, 0.653)
+
+[sub_resource type="Animation" id="Animation_q3lat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:DeathBrightnessLerp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rail/Camera3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddoul"]
+_data = {
+&"Death": SubResource("Animation_tok1r"),
+&"RESET": SubResource("Animation_q3lat")
+}
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Animations", "CameraRail", "Camera")]
+script = ExtResource("1_xhfnw")
+Step = ExtResource("2_tok1r")
+Animations = NodePath("AnimationPlayer")
+CameraRail = NodePath("Rail")
+Camera = NodePath("Rail/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_kpjcp")
+
+[node name="Rail" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Rail"]
+far = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ddoul")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

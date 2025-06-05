@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr64ohi5ip26y"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_xnfsg"]
+[ext_resource type="PackedScene" uid="uid://ucbt1flmi5f0" path="res://Floors/map2.glb" id="2_728lu"]
+[ext_resource type="Script" uid="uid://bnu3xqanj3sod" path="res://Actions/_173Action.cs" id="2_ja6ld"]
+[ext_resource type="AudioStream" uid="uid://cgskt4vemkf5t" path="res://Sounds/dontlook.ogg" id="3_28ywa"]
+[ext_resource type="PackedScene" uid="uid://bbeqichhkv4xt" path="res://Enemies/Mental/Mental.tscn" id="4_31m0m"]
+
+[node name="FloorBase" node_paths=PackedStringArray("Mental", "Visibility") instance=ExtResource("1_xnfsg")]
+script = ExtResource("2_ja6ld")
+Mental = NodePath("Start/mental")
+Visibility = NodePath("Start/mental/VisibleOnScreenNotifier3D")
+DontLook = ExtResource("3_28ywa")
+PredeterminedFloor = ExtResource("2_728lu")
+
+[node name="mental" parent="Start" index="0" instance=ExtResource("4_31m0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, -0.5, -6)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Start/mental" index="3"]
+aabb = AABB(-0.3, -0.4, -0.4, 0.75, 1.5, 0.75)

@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://vqaayh57x2u1"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_mnihy"]
+[ext_resource type="Script" uid="uid://cdmj0uj4e46p3" path="res://Actions/DarknessAction.cs" id="2_px5i0"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="3_thil7"]
+[ext_resource type="PackedScene" uid="uid://dt22ugqroatsa" path="res://Actions/Pillar.tscn" id="4_oh0oc"]
+
+[sub_resource type="Animation" id="Animation_oh0oc"]
+resource_name = "Actions"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:DarknessFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AddEnemy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_thil7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:DarknessFactor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8h4p"]
+_data = {
+&"Actions": SubResource("Animation_oh0oc"),
+&"RESET": SubResource("Animation_thil7")
+}
+
+[node name="FloorBase" node_paths=PackedStringArray("Animations", "PillarStart", "PillarEnd") instance=ExtResource("1_mnihy")]
+script = ExtResource("2_px5i0")
+Animations = NodePath("AnimationPlayer")
+PillarStart = NodePath("Start/Pillar")
+PillarEnd = NodePath("End/Pillar")
+DarknessFactor = 2.0
+PredeterminedFloor = ExtResource("3_thil7")
+
+[node name="Pillar" parent="Start" index="0" instance=ExtResource("4_oh0oc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Pillar" parent="End" index="0" instance=ExtResource("4_oh0oc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_m8h4p")
+}

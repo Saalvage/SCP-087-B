@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://djunsy75xmgks"]
+
+[ext_resource type="Shader" uid="uid://b56bemqj4bfss" path="res://Materials/BasicShader.gdshader" id="1_857cl"]
+[ext_resource type="Texture2D" uid="uid://cdquxvswdwsdu" path="res://Materials/Textures/door.jpg" id="2_857cl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_857cl")
+shader_parameter/uvScale = Vector2(3, 2)
+shader_parameter/fogScale = 1.0
+shader_parameter/tex = ExtResource("2_857cl")

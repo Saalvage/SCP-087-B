@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbeqichhkv4xt"]
+
+[ext_resource type="PackedScene" uid="uid://ddy7xr831mm51" path="res://Enemies/Mental/mental.glb" id="1_3o4wt"]
+[ext_resource type="Script" uid="uid://bb01e1bhjpkkc" path="res://Enemies/Mental/Mental.cs" id="2_epr5s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_epr5s"]
+radius = 0.3
+height = 1.5
+
+[node name="mental" node_paths=PackedStringArray("Animations") instance=ExtResource("1_3o4wt")]
+script = ExtResource("2_epr5s")
+Animations = NodePath("AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_epr5s")
+
+[node name="Skeleton" parent="." index="1"]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, -0.4, 0)
+
+[node name="Joint1" parent="Skeleton/Skeleton_node/Skeleton1/Skeleton2/Skeleton3/Skeleton4/Skeleton5/ROOT" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0092523, -0.265583, 0)
+
+[node name="Skeleton3D" parent="Skeleton/Skeleton_node/Skeleton1/Skeleton2/Skeleton3/Skeleton4/Skeleton5/ROOT/Joint1" index="0"]
+bones/2/rotation = Quaternion(0, -0.0305385, 0, 0.999534)
+bones/3/rotation = Quaternion(-0.026177, 0, 0, 0.999657)
+bones/4/rotation = Quaternion(0, -0.121869, 0, 0.992546)
+bones/5/rotation = Quaternion(-0.0866378, 0.108453, 0.00948838, 0.990274)
+bones/8/rotation = Quaternion(-0.224951, 0, 0, 0.97437)
+bones/9/rotation = Quaternion(0.152123, 0, 0, 0.988361)
+bones/10/rotation = Quaternion(-0.100188, 0, 0, 0.994969)
+bones/11/rotation = Quaternion(-0.026177, 0, 0, 0.999657)
+bones/13/rotation = Quaternion(0.0610486, 0, 0, 0.998135)
+bones/14/rotation = Quaternion(0.362438, 0, 0, 0.932008)
+bones/16/rotation = Quaternion(0.317305, 0, 0, 0.948324)
+bones/17/rotation = Quaternion(-0.0697565, 0, 0, 0.997564)
+bones/18/rotation = Quaternion(-0.19509, 0, 0, 0.980785)
+bones/21/rotation = Quaternion(-0.143493, 0, 0, 0.989651)
+bones/22/rotation = Quaternion(-0.0523359, 0, 0, 0.99863)
+bones/24/rotation = Quaternion(0.199368, 0, 0, 0.979925)
+
+[node name="AnimationPlayer" parent="." index="2"]
+reset_on_save = false

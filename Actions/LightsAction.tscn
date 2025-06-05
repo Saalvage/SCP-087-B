@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://blhs6k0g1s5jx"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_spwlw"]
+[ext_resource type="Script" uid="uid://lvakw8aou257" path="res://Actions/LightsAction.cs" id="2_jauba"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="3_yvwjd"]
+[ext_resource type="AudioStream" uid="uid://dd5xu87dyigls" path="res://Sounds/match.ogg" id="5_l1g2p"]
+[ext_resource type="AudioStream" uid="uid://dqdx4fvp85ord" path="res://Sounds/horror3.ogg" id="7_m4nls"]
+
+[sub_resource type="Animation" id="Animation_driru"]
+resource_name = "Actions"
+length = 11.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.6333, 4.1333, 8.1333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"AddEnemy"
+}, {
+"args": [],
+"method": &"EnableLight"
+}, {
+"args": [],
+"method": &"RemoveEnemy"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_l1g2p")
+}],
+"times": PackedFloat32Array(3.6333)
+}
+tracks/1/use_blend = false
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_m4nls")
+}],
+"times": PackedFloat32Array(4.8)
+}
+tracks/2/use_blend = false
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4nls"]
+_data = {
+&"Actions": SubResource("Animation_driru")
+}
+
+[node name="FloorBase" node_paths=PackedStringArray("Animations") instance=ExtResource("1_spwlw")]
+script = ExtResource("2_jauba")
+Animations = NodePath("AnimationPlayer")
+ActivationDistance = 1.0
+PredeterminedFloor = ExtResource("3_yvwjd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_m4nls")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="5"]

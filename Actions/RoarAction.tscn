@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://3wimo3m0v1n1"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_8xpab"]
+[ext_resource type="Script" uid="uid://cxlky2ly422v2" path="res://Actions/RoarAction.cs" id="2_3eeyx"]
+[ext_resource type="AudioStream" uid="uid://ck5n5s280ylf1" path="res://Sounds/roar.ogg" id="3_3eeyx"]
+
+[node name="FloorBase" node_paths=PackedStringArray("Emitter") instance=ExtResource("1_8xpab")]
+script = ExtResource("2_3eeyx")
+Emitter = NodePath("Center/Emitter")
+Roar = ExtResource("3_3eeyx")
+
+[node name="Emitter" type="Node3D" parent="Center" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkbkf4c4vrvnb"]
+
+[ext_resource type="PackedScene" uid="uid://md8d18xlofh5" path="res://Actions/StepsAction.tscn" id="1_cxbhd"]
+[ext_resource type="AudioStream" uid="uid://miidk0ap6hcq" path="res://Sounds/breath.ogg" id="2_cxbhd"]
+
+[sub_resource type="Animation" id="Animation_dxcix"]
+resource_name = "Playing"
+length = 9.8333
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center/AudioStreamPlayer3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_cxbhd")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = false
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bn7d5"]
+_data = {
+&"Playing": SubResource("Animation_dxcix")
+}
+
+[node name="FloorBase" instance=ExtResource("1_cxbhd")]
+RequiredDistance = 7.0
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_bn7d5")
+}

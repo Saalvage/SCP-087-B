@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvxqlin50lwv7"]
+
+[ext_resource type="PackedScene" uid="uid://bth8g1hfcktnx" path="res://Actions/Trick2Action.tscn" id="1_41xb4"]
+[ext_resource type="PackedScene" uid="uid://cyawco0mnnbhw" path="res://Floors/map4.glb" id="2_hu7i4"]
+
+[node name="FloorBase" instance=ExtResource("1_41xb4")]
+PredeterminedFloor = ExtResource("2_hu7i4")
+
+[node name="Start" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.25)
+
+[node name="Marker" parent="Start" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -5)

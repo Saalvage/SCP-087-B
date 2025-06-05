@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://g68lrpv307nu"]
+
+[ext_resource type="Shader" uid="uid://b56bemqj4bfss" path="res://Materials/BasicShader.gdshader" id="1_ux40o"]
+[ext_resource type="Texture2D" uid="uid://depuc148qd1f1" path="res://Materials/Textures/concretefloor.jpg" id="2_ux40o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ux40o")
+shader_parameter/uvScale = Vector2(1, 1)
+shader_parameter/fogScale = 1.0
+shader_parameter/tex = ExtResource("2_ux40o")

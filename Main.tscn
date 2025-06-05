@@ -1,0 +1,316 @@
+[gd_scene load_steps=83 format=3 uid="uid://re0rhs8yw5vr"]
+
+[ext_resource type="Script" uid="uid://hrog14dhjq26" path="res://Common/GameCoordinator.cs" id="1_j4qnp"]
+[ext_resource type="Script" uid="uid://bg2rlpyvuxgyj" path="res://Map/MapGenerator.cs" id="1_uu6xs"]
+[ext_resource type="AudioStream" uid="uid://cfkeg5p72htj4" path="res://Sounds/Ambient/ambient1.ogg" id="2_hri7i"]
+[ext_resource type="Script" uid="uid://dsgoafe1tftmf" path="res://Utility/SceneGlobalManager.cs" id="2_wkp8b"]
+[ext_resource type="Script" uid="uid://b0u8nuxw66l72" path="res://Common/CommonResourceHolder.cs" id="3_j4qnp"]
+[ext_resource type="AudioStream" uid="uid://d2lxdpb7a7dr3" path="res://Sounds/Ambient/ambient2.ogg" id="3_w3rk5"]
+[ext_resource type="AudioStream" uid="uid://kbh6bkbwphmk" path="res://Sounds/Ambient/ambient3.ogg" id="4_5mvff"]
+[ext_resource type="Script" uid="uid://brdk1amsvhhkx" path="res://Data/FloorInfo.cs" id="4_cm0pq"]
+[ext_resource type="AudioStream" uid="uid://g6u8552hhbjl" path="res://Sounds/horror1.ogg" id="5_fpfj3"]
+[ext_resource type="AudioStream" uid="uid://b28xqik1pqopd" path="res://Sounds/Ambient/ambient4.ogg" id="5_oye8v"]
+[ext_resource type="AudioStream" uid="uid://s0opxqa8goxe" path="res://Sounds/fireout.ogg" id="5_sc1dx"]
+[ext_resource type="AudioStream" uid="uid://cy0vq0f8aik61" path="res://Sounds/Ambient/ambient5.ogg" id="6_40n85"]
+[ext_resource type="AudioStream" uid="uid://djsygrkrthcwd" path="res://Sounds/horror2.ogg" id="6_sc1dx"]
+[ext_resource type="AudioStream" uid="uid://cxjmr0rqprglj" path="res://Sounds/Ambient/ambient6.ogg" id="7_gb15f"]
+[ext_resource type="AudioStream" uid="uid://dqdx4fvp85ord" path="res://Sounds/horror3.ogg" id="7_kjvhd"]
+[ext_resource type="AudioStream" uid="uid://dlur107qq2rcj" path="res://Sounds/Ambient/ambient7.ogg" id="8_sph85"]
+[ext_resource type="AudioStream" uid="uid://dhwovu4spjaps" path="res://Sounds/Ambient/ambient8.ogg" id="9_o7g6l"]
+[ext_resource type="Material" uid="uid://c40ecdlsgougv" path="res://Enemies/Mental/173.tres" id="9_sc1dx"]
+[ext_resource type="AudioStream" uid="uid://bqhystdb2bhdh" path="res://Sounds/stone.ogg" id="10_kjvhd"]
+[ext_resource type="AudioStream" uid="uid://d0swrsyadf1tt" path="res://Sounds/Ambient/ambient9.ogg" id="10_w3rk5"]
+[ext_resource type="PackedScene" uid="uid://b8jq8kufphbny" path="res://Map/Sign.tscn" id="12_5tuhn"]
+[ext_resource type="PackedScene" uid="uid://jvlcxa3mx0vy" path="res://Player/Player.tscn" id="12_5vvyt"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="12_j4qnp"]
+[ext_resource type="PackedScene" uid="uid://bbeqichhkv4xt" path="res://Enemies/Mental/Mental.tscn" id="12_kjvhd"]
+[ext_resource type="PackedScene" uid="uid://muv8rkc4up6t" path="res://Actions/ProceedAction.tscn" id="13_fpfj3"]
+[ext_resource type="PackedScene" uid="uid://dkru33dmkvktk" path="res://Enemies/Glimpse/Glimpse.tscn" id="13_kjvhd"]
+[ext_resource type="PackedScene" uid="uid://cxpqeskyaik58" path="res://Actions/TrapAction.tscn" id="17_2gh4u"]
+[ext_resource type="AudioStream" uid="uid://cu6g7fdgljs2q" path="res://Sounds/music.ogg" id="17_sc1dx"]
+[ext_resource type="Material" uid="uid://djunsy75xmgks" path="res://Materials/Door.tres" id="19_5tuhn"]
+[ext_resource type="PackedScene" uid="uid://dad1o6ucigyut" path="res://Floors/map1.glb" id="25_khphd"]
+[ext_resource type="PackedScene" uid="uid://dd6neg7yrk3rk" path="res://Actions/Radio2Action.tscn" id="25_sph85"]
+[ext_resource type="PackedScene" uid="uid://ucbt1flmi5f0" path="res://Floors/map2.glb" id="26_g4yo4"]
+[ext_resource type="Script" uid="uid://h8lvy5wphabq" path="res://Data/FixedFloorActionInfo.cs" id="26_o7g6l"]
+[ext_resource type="PackedScene" uid="uid://c2sx4pshyyh2j" path="res://Actions/LockAction.tscn" id="26_w3rk5"]
+[ext_resource type="PackedScene" uid="uid://cvhaefl5nmicq" path="res://Floors/map3.glb" id="27_im7ls"]
+[ext_resource type="PackedScene" uid="uid://p2w24vj2223" path="res://Actions/Radio3Action.tscn" id="27_vi5kq"]
+[ext_resource type="PackedScene" uid="uid://bbd315gseux4d" path="res://Actions/Radio4Action.tscn" id="28_5mkgo"]
+[ext_resource type="PackedScene" uid="uid://cyawco0mnnbhw" path="res://Floors/map4.glb" id="28_a34eg"]
+[ext_resource type="PackedScene" uid="uid://bkbkf4c4vrvnb" path="res://Actions/BreathAction.tscn" id="29_3ccbu"]
+[ext_resource type="PackedScene" uid="uid://cu10wyjvmmidl" path="res://Floors/map5.glb" id="29_via5u"]
+[ext_resource type="PackedScene" uid="uid://md8d18xlofh5" path="res://Actions/StepsAction.tscn" id="30_5mkgo"]
+[ext_resource type="PackedScene" uid="uid://djycbtpydwird" path="res://Floors/map6.glb" id="30_ac6pf"]
+[ext_resource type="PackedScene" uid="uid://bmnf77tgmhsef" path="res://Actions/FlashAction.tscn" id="31_3ccbu"]
+[ext_resource type="PackedScene" uid="uid://dx2fkbtg85vp4" path="res://Floors/maze.glb" id="31_ek63v"]
+[ext_resource type="PackedScene" uid="uid://blhs6k0g1s5jx" path="res://Actions/LightsAction.tscn" id="32_ny7u2"]
+[ext_resource type="PackedScene" uid="uid://bvxqlin50lwv7" path="res://Actions/Trick1Action.tscn" id="33_jt61w"]
+[ext_resource type="PackedScene" uid="uid://bth8g1hfcktnx" path="res://Actions/Trick2Action.tscn" id="34_v8qla"]
+[ext_resource type="PackedScene" uid="uid://dk83y84g5w15n" path="res://Actions/RunAction.tscn" id="35_y1tbi"]
+[ext_resource type="PackedScene" uid="uid://dr64ohi5ip26y" path="res://Actions/173Action.tscn" id="36_c2s76"]
+[ext_resource type="PackedScene" uid="uid://3wimo3m0v1n1" path="res://Actions/RoarAction.tscn" id="37_f4ese"]
+[ext_resource type="PackedScene" uid="uid://vqaayh57x2u1" path="res://Actions/DarknessAction.tscn" id="39_v8qla"]
+[ext_resource type="PackedScene" uid="uid://2n18u13mtvwx" path="res://Actions/CellAction.tscn" id="40_c2s76"]
+[ext_resource type="Script" uid="uid://cdw5spsktt6x8" path="res://Data/RandomFloorActionInfo.cs" id="41_f4ese"]
+[ext_resource type="Script" uid="uid://wlvoofyh4h6h" path="res://HUD/FPSCounter.cs" id="54_g4yo4"]
+
+[sub_resource type="Environment" id="Environment_glv2v"]
+ambient_light_source = 1
+reflected_light_source = 1
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 1.0
+fog_depth_end = 5.0
+
+[sub_resource type="Resource" id="Resource_sc1dx"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("12_j4qnp")
+MinFloor = -1
+Weight = 10
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_oaklg"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("25_khphd")
+MinFloor = -1
+Weight = 2
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_4bst2"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("26_g4yo4")
+MinFloor = -1
+Weight = 2
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_uy3go"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("27_im7ls")
+MinFloor = -1
+Weight = 2
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_yf3a2"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("28_a34eg")
+MinFloor = -1
+Weight = 1
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_gdb40"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("29_via5u")
+MinFloor = -1
+Weight = 1
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_8h1yq"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("30_ac6pf")
+MinFloor = -1
+Weight = 1
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_fykug"]
+script = ExtResource("4_cm0pq")
+Floor = ExtResource("31_ek63v")
+MinFloor = 40
+Weight = 1
+metadata/_custom_type_script = "uid://brdk1amsvhhkx"
+
+[sub_resource type="Resource" id="Resource_ny7u2"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("25_sph85")]
+MinFloor = 3
+MaxFloor = 4
+Probability = 0.5
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_x3yn0"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("27_vi5kq")]
+MinFloor = 5
+MaxFloor = 6
+Probability = 0.667
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_1w2xm"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("28_5mkgo")]
+MinFloor = 8
+MaxFloor = 9
+Probability = 0.5
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_gngx1"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("29_3ccbu")]
+MinFloor = 10
+MaxFloor = 11
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_jt61w"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("30_5mkgo")]
+MinFloor = 12
+MaxFloor = 13
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_v8qla"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("31_3ccbu")]
+MinFloor = 10
+MaxFloor = 19
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_y1tbi"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("32_ny7u2")]
+MinFloor = 20
+MaxFloor = 22
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_rchyr"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("33_jt61w"), ExtResource("34_v8qla")]
+MinFloor = 25
+MaxFloor = 28
+Probability = 0.5
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_pljue"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("35_y1tbi")]
+MinFloor = 29
+MaxFloor = 33
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_nx4yo"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("36_c2s76")]
+MinFloor = 34
+MaxFloor = 37
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_5tfui"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("35_y1tbi")]
+MinFloor = 40
+MaxFloor = 60
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_38apo"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("37_f4ese")]
+MinFloor = 40
+MaxFloor = 60
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_khphd"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("17_2gh4u")]
+MinFloor = 40
+MaxFloor = 60
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_g4yo4"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("31_3ccbu")]
+MinFloor = 40
+MaxFloor = 60
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_c2s76"]
+script = ExtResource("26_o7g6l")
+Actions = [ExtResource("39_v8qla")]
+MinFloor = 150
+MaxFloor = 200
+Probability = 1.0
+metadata/_custom_type_script = "uid://h8lvy5wphabq"
+
+[sub_resource type="Resource" id="Resource_im7ls"]
+script = ExtResource("41_f4ese")
+Actions = [null, ExtResource("40_c2s76"), ExtResource("40_c2s76"), ExtResource("31_3ccbu"), ExtResource("33_jt61w"), ExtResource("34_v8qla"), ExtResource("29_3ccbu"), ExtResource("30_5mkgo"), ExtResource("17_2gh4u"), ExtResource("37_f4ese")]
+Count = 9
+Start = 25
+End = 69
+metadata/_custom_type_script = "uid://cdw5spsktt6x8"
+
+[sub_resource type="Resource" id="Resource_a34eg"]
+script = ExtResource("41_f4ese")
+Actions = [null, ExtResource("40_c2s76"), ExtResource("40_c2s76"), ExtResource("32_ny7u2"), ExtResource("33_jt61w"), ExtResource("34_v8qla"), ExtResource("29_3ccbu"), ExtResource("30_5mkgo"), ExtResource("17_2gh4u"), ExtResource("37_f4ese")]
+Count = 61
+Start = 75
+End = 200
+metadata/_custom_type_script = "uid://cdw5spsktt6x8"
+
+[sub_resource type="BoxMesh" id="BoxMesh_2gh4u"]
+material = ExtResource("19_5tuhn")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_devvj"]
+size = Vector3(1, 2, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_j4qnp")
+Ambient = Array[AudioStream]([ExtResource("2_hri7i"), ExtResource("3_w3rk5"), ExtResource("4_5mvff"), ExtResource("5_oye8v"), ExtResource("6_40n85"), ExtResource("7_gb15f"), ExtResource("8_sph85"), ExtResource("9_o7g6l"), ExtResource("10_w3rk5")])
+
+[node name="SceneLocalManager" type="Node" parent="."]
+script = ExtResource("2_wkp8b")
+
+[node name="CommonResourceHolder" type="Node" parent="."]
+script = ExtResource("3_j4qnp")
+Mental = ExtResource("12_kjvhd")
+Mental173Material = ExtResource("9_sc1dx")
+FireOut = ExtResource("5_sc1dx")
+HorrorSounds = Array[Object]([ExtResource("5_fpfj3"), ExtResource("6_sc1dx"), ExtResource("7_kjvhd")])
+Stone = ExtResource("10_kjvhd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_glv2v")
+
+[node name="MapGenerator" type="Node" parent="."]
+script = ExtResource("1_uu6xs")
+Sign = ExtResource("12_5tuhn")
+Glimpse = ExtResource("13_kjvhd")
+RandomFloors = Array[Object]([SubResource("Resource_sc1dx"), SubResource("Resource_oaklg"), SubResource("Resource_4bst2"), SubResource("Resource_uy3go"), SubResource("Resource_yf3a2"), SubResource("Resource_gdb40"), SubResource("Resource_8h1yq"), SubResource("Resource_fykug")])
+FixedActions = Array[Object]([SubResource("Resource_ny7u2"), SubResource("Resource_x3yn0"), SubResource("Resource_1w2xm"), SubResource("Resource_gngx1"), SubResource("Resource_jt61w"), SubResource("Resource_v8qla"), SubResource("Resource_y1tbi"), SubResource("Resource_rchyr"), SubResource("Resource_pljue"), SubResource("Resource_nx4yo"), SubResource("Resource_5tfui"), SubResource("Resource_38apo"), SubResource("Resource_khphd"), SubResource("Resource_g4yo4"), SubResource("Resource_c2s76")])
+RandomActions = Array[Object]([SubResource("Resource_im7ls"), SubResource("Resource_a34eg")])
+FloorActions = [ExtResource("13_fpfj3"), null, null, null, null, null, ExtResource("26_w3rk5"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+[node name="Player" parent="." instance=ExtResource("12_5vvyt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, -1.3, 0.5)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_sc1dx")
+autoplay = true
+parameters/looping = true
+
+[node name="Door" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -1, 0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+mesh = SubResource("BoxMesh_2gh4u")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+shape = SubResource("BoxShape3D_devvj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("54_g4yo4")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2sx4pshyyh2j"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_jhc23"]
+[ext_resource type="Script" uid="uid://c105wvjg8b55v" path="res://Actions/LockAction.cs" id="2_763oy"]
+[ext_resource type="PackedScene" uid="uid://dt22ugqroatsa" path="res://Actions/Pillar.tscn" id="3_v0gvl"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="4_yf863"]
+
+[node name="FloorBase" node_paths=PackedStringArray("Pillar") instance=ExtResource("1_jhc23")]
+script = ExtResource("2_763oy")
+Pillar = NodePath("Start/Pillar")
+PredeterminedFloor = ExtResource("4_yf863")
+
+[node name="Pillar" parent="Start" index="0" instance=ExtResource("3_v0gvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)

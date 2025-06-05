@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8jq8kufphbny"]
+
+[ext_resource type="Material" uid="uid://ce36prfbpgrbj" path="res://Materials/Sign.tres" id="1_u07du"]
+[ext_resource type="FontFile" uid="uid://clrepiu21isa2" path="res://Fonts/Pretext.TTF" id="2_kffo2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uuy7b"]
+material = ExtResource("1_u07du")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Sign" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_uuy7b")
+
+[node name="TextLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.250197)
+pixel_size = 0.001
+double_sided = false
+modulate = Color(0, 0, 0, 1)
+text = "2"
+font = ExtResource("2_kffo2")
+font_size = 128
+outline_size = 0

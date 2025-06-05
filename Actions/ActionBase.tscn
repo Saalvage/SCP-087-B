@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8nk5houpcrpu"]
+
+[ext_resource type="Script" uid="uid://r7g8x85jc0lg" path="res://Actions/ActionBase.cs" id="1_mmlqy"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="2_hucap"]
+
+[node name="FloorBase" type="Node3D" node_paths=PackedStringArray("FloorStart", "FloorCenter", "FloorEnd")]
+script = ExtResource("1_mmlqy")
+FloorStart = NodePath("Start")
+FloorCenter = NodePath("Center")
+FloorEnd = NodePath("End")
+PredeterminedFloor = ExtResource("2_hucap")
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.5)
+
+[node name="Center" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0.5)
+
+[node name="End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0.5)

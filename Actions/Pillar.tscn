@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt22ugqroatsa"]
+
+[ext_resource type="Shader" uid="uid://b56bemqj4bfss" path="res://Materials/BasicShader.gdshader" id="1_dhjk3"]
+[ext_resource type="Texture2D" uid="uid://djidtgfol7mdo" path="res://Materials/Textures/brickwall.jpg" id="2_ivs0g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ftys"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qp6n"]
+render_priority = 0
+shader = ExtResource("1_dhjk3")
+shader_parameter/uvScale = Vector2(3, 2)
+shader_parameter/tex = ExtResource("2_ivs0g")
+
+[sub_resource type="BoxMesh" id="BoxMesh_iyb76"]
+material = SubResource("ShaderMaterial_3qp6n")
+size = Vector3(1, 2, 1)
+
+[node name="Pillar" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("BoxShape3D_3ftys")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_iyb76")

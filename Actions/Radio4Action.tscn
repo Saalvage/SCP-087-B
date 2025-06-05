@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbd315gseux4d"]
+
+[ext_resource type="PackedScene" uid="uid://muv8rkc4up6t" path="res://Actions/ProceedAction.tscn" id="1_prg1o"]
+[ext_resource type="AudioStream" uid="uid://e6pge1f647jy" path="res://Sounds/radio4.ogg" id="2_e35ti"]
+[ext_resource type="PackedScene" uid="uid://m7w3t1ga21a5" path="res://Floors/map.glb" id="3_e35ti"]
+
+[node name="FloorBase" instance=ExtResource("1_prg1o")]
+Sound = ExtResource("2_e35ti")
+Delay = 0.0
+PredeterminedFloor = ExtResource("3_e35ti")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://2n18u13mtvwx"]
+
+[ext_resource type="PackedScene" uid="uid://b8nk5houpcrpu" path="res://Actions/ActionBase.tscn" id="1_kp3an"]
+[ext_resource type="PackedScene" uid="uid://dad1o6ucigyut" path="res://Floors/map1.glb" id="2_1yqde"]
+[ext_resource type="Script" uid="uid://gxmgol6aqxdd" path="res://Actions/CellAction.cs" id="2_kfkd3"]
+[ext_resource type="AudioStream" uid="uid://miidk0ap6hcq" path="res://Sounds/breath.ogg" id="3_h5tn4"]
+
+[node name="FloorBase" node_paths=PackedStringArray("SpawnPoint") instance=ExtResource("1_kp3an")]
+script = ExtResource("2_kfkd3")
+SpawnPoint = NodePath("Start/SpawnPoint")
+Breath = ExtResource("3_h5tn4")
+PredeterminedFloor = ExtResource("2_1yqde")
+
+[node name="SpawnPoint" type="Node3D" parent="Start" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 3.2)

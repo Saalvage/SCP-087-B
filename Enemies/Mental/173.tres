@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c40ecdlsgougv"]
+
+[ext_resource type="Shader" uid="uid://b56bemqj4bfss" path="res://Materials/BasicShader.gdshader" id="1_7ceyg"]
+[ext_resource type="Texture2D" uid="uid://dq1nugtqxeyn7" path="res://Enemies/Mental/173.jpg" id="2_7ceyg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7ceyg")
+shader_parameter/uvScale = Vector2(1, 1)
+shader_parameter/fogScale = 0.0
+shader_parameter/tex = ExtResource("2_7ceyg")
