@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using Godot;
 
@@ -26,7 +25,7 @@ public partial class FlashAction : ActionBase {
 
         if (_enemy == null && Player.GlobalPosition.DistanceSquaredTo(_spawnPoint.GlobalPosition) < 1.5f * 1.5f) {
             _enemy = Resources.Mental.Instantiate<Mental>();
-            GetTree().Root.AddChild(_enemy);
+            GetParent().AddChild(_enemy);
             _enemy.GlobalPosition = _spawnPoint.GlobalPosition with { Y = _spawnPoint.GlobalPosition.Y - 0.5f };
 
             AudioManager.PlaySound(Resources.HorrorSounds.RandomElement());

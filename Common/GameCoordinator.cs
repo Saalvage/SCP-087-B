@@ -3,7 +3,7 @@ using System.Linq;
 using Godot;
 
 [SceneGlobal]
-public partial class GameCoordinator : Node3D {
+public partial class GameCoordinator : Node {
     [Export] public required AudioStream[] Ambient;
 
     public required MapGenerator MapGenerator;

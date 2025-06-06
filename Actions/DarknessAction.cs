@@ -13,6 +13,7 @@ public partial class DarknessAction : ActionBase {
         get;
         set {
             field = value;
+            if (Player == null!) { return; }
             var brightness = float.Max(10f, float.Lerp(Player.Brightness, 0f, value)) / 255f;
             Helpers.SetBrightness(new Color(brightness, brightness, brightness));
         }

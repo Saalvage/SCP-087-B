@@ -37,7 +37,7 @@ public partial class AudioManager : Node {
 
     public static void PlaySound3D(AudioStream stream, Vector3 origin, Action? onFinished = null) {
         var node = new Node3D { Position = origin };
-        _instance.GetTree().Root.AddChild(node);
+        _instance.AddChild(node);
         _instance.PlaySoundInternal3D(stream, node, () => {
             node.QueueFree();
             onFinished?.Invoke();
