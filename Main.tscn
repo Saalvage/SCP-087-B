@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://re0rhs8yw5vr"]
+[gd_scene load_steps=23 format=3 uid="uid://re0rhs8yw5vr"]
 
 [ext_resource type="Script" uid="uid://d1frdod20uyqq" path="res://Common/InputForwarder.cs" id="1_5tfui"]
 [ext_resource type="Script" uid="uid://dsgoafe1tftmf" path="res://Utility/SceneGlobalManager.cs" id="2_wkp8b"]
@@ -15,30 +15,37 @@
 [ext_resource type="Shader" uid="uid://bvih45qm5sd3n" path="res://Materials/RawShader.gdshader" id="13_uy3go"]
 [ext_resource type="AudioStream" uid="uid://cu6g7fdgljs2q" path="res://Sounds/music.ogg" id="17_sc1dx"]
 [ext_resource type="Shader" uid="uid://d4bpitqatbbj4" path="res://Materials/DreamShader.gdshader" id="52_via5u"]
-[ext_resource type="Texture2D" uid="uid://bmmsc7s3t3fmr" path="res://Materials/Textures/white.jpg" id="54_ek63v"]
 [ext_resource type="Script" uid="uid://wlvoofyh4h6h" path="res://HUD/FPSCounter.cs" id="54_g4yo4"]
 [ext_resource type="Script" uid="uid://bya8nd08orqug" path="res://Common/DreamFilter.cs" id="55_im7ls"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ac6pf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_devvj"]
 viewport_path = NodePath("WorldViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ek63v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b0ty"]
 resource_local_to_scene = true
 shader = ExtResource("52_via5u")
-shader_parameter/curr = SubResource("ViewportTexture_ac6pf")
+shader_parameter/curr = SubResource("ViewportTexture_devvj")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4bst2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5tuhn"]
 viewport_path = NodePath("DreamfilterViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_uy3go"]
-viewport_path = NodePath("DreamfilterViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf3a2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tuhn"]
 resource_local_to_scene = true
 shader = ExtResource("13_uy3go")
-shader_parameter/tex = SubResource("ViewportTexture_uy3go")
+shader_parameter/tex = SubResource("ViewportTexture_devvj")
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("Viewport")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_devvj"]
+resource_local_to_scene = true
+shader = ExtResource("13_uy3go")
+shader_parameter/tex = SubResource("ViewportTexture_5tuhn")
+
+[node name="Main" type="Control" node_paths=PackedStringArray("Viewport")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_5tfui")
 Viewport = NodePath("WorldViewport")
 
@@ -57,37 +64,55 @@ Stone = ExtResource("10_kjvhd")
 own_world_3d = true
 script = ExtResource("11_ek63v")
 
+[node name="FPS" type="Label" parent="WorldViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("54_g4yo4")
+
 [node name="World" parent="WorldViewport" instance=ExtResource("12_xrxkg")]
 
-[node name="DreamfilterViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Child")]
+[node name="DreamfilterViewport" type="SubViewport" parent="."]
 own_world_3d = true
+canvas_item_default_texture_filter = 0
 render_target_clear_mode = 1
 render_target_update_mode = 0
 script = ExtResource("55_im7ls")
-Child = NodePath("Sprite2D")
 
-[node name="Camera2D" type="Camera2D" parent="DreamfilterViewport"]
-
-[node name="Sprite2D" type="Sprite2D" parent="DreamfilterViewport"]
-material = SubResource("ShaderMaterial_ek63v")
-position = Vector2(1, 1)
-texture = ExtResource("54_ek63v")
+[node name="TextureRect" type="TextureRect" parent="DreamfilterViewport"]
+self_modulate = Color(1, 1, 1, 0.0196078)
+material = SubResource("ShaderMaterial_3b0ty")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_5tuhn")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_sc1dx")
 autoplay = true
 parameters/looping = true
 
-[node name="Main" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_4bst2")
-centered = false
+[node name="World" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5tuhn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_5tuhn")
 
-[node name="Dreamfilter" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_yf3a2")
-texture = SubResource("ViewportTexture_4bst2")
-centered = false
-
-[node name="FPS" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("54_g4yo4")
+[node name="Dreamfilter" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_devvj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_5tuhn")
