@@ -103,6 +103,7 @@ shape = SubResource("CapsuleShape3D_kpjcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Rail"]
+fov = 58.7
 far = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
