@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 [Tool]
 public partial class RequiredPropertyHelper : EditorPlugin {
-    [GeneratedRegex(@"public[\n ]+partial[\n ]+class[\n ]+(?<ClassName>[@A-Za-z][A-Za-z0-9]*)")]
+    [GeneratedRegex(@"public[\n ]+(sealed[\n ]+)?partial[\n ]+class[\n ]+(?<ClassName>[@A-Za-z][A-Za-z0-9]*)")]
     private static partial Regex ClassNameExtractorRegex();
 
     public override void _ApplyChanges() {
@@ -20,11 +20,11 @@ public partial class RequiredPropertyHelper : EditorPlugin {
 
             foreach (Match match in ClassNameExtractorRegex().Matches(sourceCode)) {
                 var name = match.Groups["ClassName"].Value;
-                
+
                 var type = AppDomain.CurrentDomain.GetAssemblies()
                     .SelectMany(x => x.GetExportedTypes())
                     .FirstOrDefault(x => x.Name == name);
-                    
+
                 if (type == null) { continue; }
 
                 foreach (var member in type.GetMembers()) {
