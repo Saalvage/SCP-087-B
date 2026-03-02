@@ -16,6 +16,9 @@ public partial class PlayerController : CharacterControllerBase {
     [Export] public float FogNear = 1f;
     // Originally 2.5f, adjusted to account for radial fog.
     [Export] public float FogFar = 3f;
+    
+    [Export] private float MouseSensitivity = 0.2f;
+    [Export] private float ControllerSensitivity = 300f;
 
     [Export]
     public float DeathBrightnessLerp {
@@ -49,12 +52,23 @@ public partial class PlayerController : CharacterControllerBase {
 
     public override void _Input(InputEvent @event) {
         if (@event is InputEventMouseMotion mm) {
-            HandleLook(0.01f * mm.Relative);
+            HandleLook(mm.Relative * MouseSensitivity);
+        }
+    }
+
+    public override void _Process(double delta) {
+        var lookVector = Input.GetVector(
+            "LookLeft", "LookRight",
+            "LookUp", "LookDown");
+
+        if (lookVector != Vector2.Zero) {
+            HandleLook(lookVector * ControllerSensitivity * (float)delta);
         }
     }
 
     private void HandleLook(Vector2 lookDelta) {
-        CameraRail.Rotation -= new Vector3(lookDelta.Y, lookDelta.X, 0);
+        var rot = CameraRail.RotationDegrees - new Vector3(lookDelta.Y, lookDelta.X, 0);
+        CameraRail.RotationDegrees = rot with { X = float.Clamp(rot.X, -89.9f, 89.9f) };
     }
 
     public override void _PhysicsProcess(double deltaD) {
