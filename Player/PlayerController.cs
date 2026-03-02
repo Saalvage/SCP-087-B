@@ -3,23 +3,20 @@ using Godot;
 
 [SceneGlobal]
 public partial class PlayerController : CharacterControllerBase {
-    private static readonly Vector3 HeadBobInterval = new Vector3(80f, 40f, 1f) / 60;
-    private static readonly Vector3 HeadBobOffset = new(0.08f, 0.1f, 0f);
-    private float _headBobAcc;
-
-    private bool _isDead;
+    [Export] public required AudioStream Step;
     [Export] public required AnimationPlayer Animations;
-    [Export] public float BackwardSpeed = 0.9f;
-    [Export] public byte Brightness = 40;
-    [Export] public required Camera3D Camera;
     [Export] public required Node3D CameraRail;
+    [Export] public required Camera3D Camera;
+    [Export] public float ForwardSpeed = 1.2f;
+    [Export] public float BackwardSpeed = 0.9f;
+    [Export] public float SidewardsSpeed = 0.48f;
+    [Export] public byte Brightness = 40;
+    // Originally 2.5f, adjusted to account for radial fog.
     [Export] public float FogFar = 3f;
     [Export] public float FogNear = 1f;
-    [Export] public float ForwardSpeed = 1.2f;
+    
     [Export] private float MouseSensitivity = 0.2f;
     [Export] private float ControllerSensitivity = 300f;
-    [Export] public float SidewardsSpeed = 0.48f;
-    [Export] public required AudioStream Step;
 
     [Export]
     public float DeathBrightnessLerp {
@@ -35,6 +32,12 @@ public partial class PlayerController : CharacterControllerBase {
         }
     }
 
+    private bool _isDead;
+    
+    private static readonly Vector3 HeadBobInterval = new Vector3(80f, 40f, 1f) / 60;
+    private static readonly Vector3 HeadBobOffset = new(0.08f, 0.1f, 0f);
+    private float _headBobAcc;
+    
     public int Floor => Helpers.GetFloor(GlobalPosition - new Vector3(0f, 0.5f, 0f));
 
     public override void _Ready() {
