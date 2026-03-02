@@ -8,20 +8,11 @@
 
 config_version=5
 
-[animation]
-
-compatibility/default_parent_skeleton_in_mesh_instance_3d=true
-
 [application]
 
 config/name="SCP-087-B"
 config/version="0.1"
 run/main_scene="uid://re0rhs8yw5vr"
-run/disable_stderr=true
-config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-boot_splash/show_image=false
-boot_splash/stretch_mode=0
-boot_splash/use_filter=false
 config/icon="uid://cttw712ry1137"
 
 [autoload]
@@ -30,9 +21,6 @@ AudioManager="*res://Utility/AudioManager.cs"
 
 [display]
 
-window/size/mode=3
-window/vsync/vsync_mode=2
-
 [dotnet]
 
 project/assembly_name="SCP-087-B"
@@ -40,19 +28,6 @@ project/assembly_name="SCP-087-B"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/required_property_helper/plugin.cfg")
-
-[importer_defaults]
-
-3d_texture={
-&"compress/high_quality": true,
-&"compress/mode": 0
-}
-2d_array_texture={
-&"compress/mode": 0
-}
-wav={
-&"compress/mode": 0
-}
 
 [input]
 
@@ -108,18 +83,8 @@ LookLeft={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=3
-textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
-textures/vram_compression/import_s3tc_bptc=true
-textures/vram_compression/import_etc2_astc=true
-viewport/hdr_2d=true
-anti_aliasing/quality/msaa_2d=3
-anti_aliasing/quality/msaa_3d=3
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
-anti_aliasing/quality/screen_space_aa=2
-anti_aliasing/quality/use_taa=true
 
 [shader_globals]
 
