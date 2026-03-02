@@ -4,17 +4,17 @@ using Godot;
 [SceneGlobal]
 public partial class PlayerController : CharacterControllerBase {
     [Export] public required AudioStream Step;
-    
+
     [Export] public required AnimationPlayer Animations;
     [Export] public required Node3D CameraRail;
     [Export] public required Camera3D Camera;
     [Export] public float ForwardSpeed = 1.2f;
     [Export] public float BackwardSpeed = 0.9f;
     [Export] public float SidewardsSpeed = 0.48f;
-    
+
     [Export] public byte Brightness = 40;
-    // Originally 2.5f, adjusted to account for radial fog.
     [Export] public float FogNear = 1f;
+    // Originally 2.5f, adjusted to account for radial fog.
     [Export] public float FogFar = 3f;
     
     [Export] private float MouseSensitivity = 0.2f;
@@ -25,12 +25,12 @@ public partial class PlayerController : CharacterControllerBase {
         get;
         set {
             field = value;
-            
+
             if (value == 0f) {
                 Helpers.SetBrightness(Brightness);
                 return;
             }
-            
+
             var subtract = float.Lerp(0f, 90f / 255f, value);
             Helpers.SetBrightness(Color.Color8(255, 100, 100) - new Color(subtract, subtract, subtract));
         }
@@ -110,7 +110,7 @@ public partial class PlayerController : CharacterControllerBase {
     public void Kill() {
         if (_isDead) { return; }
         _isDead = true;
-        
+
         Animations.Play("Death");
     }
 
@@ -132,7 +132,6 @@ public partial class PlayerController : CharacterControllerBase {
     }
 
     public void ResetFogRange() => SetFogRange(FogNear, FogFar);
-
     public void SetFogRange(float near, float far) {
         RenderingServer.GlobalShaderParameterSet("fog", new Vector2(near, far));
     }
