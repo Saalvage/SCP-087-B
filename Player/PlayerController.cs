@@ -68,7 +68,7 @@ public partial class PlayerController : CharacterControllerBase {
 
     private void HandleLook(Vector2 lookDelta) {
         var rot = CameraRail.RotationDegrees - new Vector3(lookDelta.Y, lookDelta.X, 0);
-        CameraRail.RotationDegrees = rot with { X = float.Clamp(rot.X, -89.9f, 89.9f) };
+        CameraRail.RotationDegrees = rot with { X = float.Clamp(rot.X, -70f, 70f) };
     }
 
     public override void _PhysicsProcess(double deltaD) {
